@@ -286,3 +286,12 @@ class SAJModbusHub(DataUpdateCoordinator[dict]):
                 messages.append(mesg)
 
         return messages
+
+    def set_maxpower(self, max_power = None):
+       """Set delivered inverter power as percentage of maximum."""
+       if max_power is None:
+         maxpower=1100
+       response = self._write_registers(unit=1, address=0x3650, values=maxpower)
+       if response.isError():
+         raise response
+

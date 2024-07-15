@@ -17,5 +17,21 @@
     "abort": {
       "already_configured": "Apparaat is al geconfigureerd"
     }
+  },
+  "services": {
+    "set_maxpower": {
+      "name": "Stel het vermogen van de omvormer in",
+      "description": "Stel het vermogen van de omvormer in als percentage van het fabrieksvermogen.",
+      "fields": {
+        "device_id": {
+          "name": "Apparaat",
+          "description": "De omvormer waarvan het vermogen ingesteld wordt."
+        },
+        "maxpower": {
+          "name": "Vermogen",
+          "description": "Percentage van het fabrieksvermogen."
+        }
+      }
+    }
   }
 }

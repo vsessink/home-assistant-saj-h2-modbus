@@ -17,5 +17,21 @@
     "abort": {
       "already_configured": "Device is already configured"
     }
+  },
+  "services": {
+    "set_maxpower": {
+      "name": "Limit the inverter power",
+      "description": "Limit the power of the inverter as percentage of designated power.",
+      "fields": {
+        "device_id": {
+          "name": "Device",
+          "description": "The inverter."
+        },
+        "maxpower": {
+          "name": "Power",
+          "description": "Percentage of designated power."
+        }
+      }
+    }
   }
 }

@@ -1,0 +1,16 @@
+set_maxpower:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: saj_modbus
+    maxpower:
+      required: true
+      example: "20"
+      selector:
+        number:
+          min: 0
+          max: 100
+        translation_key: "maxpower"
+      
