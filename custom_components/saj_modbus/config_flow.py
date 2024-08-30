@@ -58,3 +58,22 @@ class SAJModbusConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 return self.async_create_entry(title=user_input[CONF_NAME], data=user_input)
 
         return self.async_show_form(step_id="user", data_schema=DATA_SCHEMA, errors=errors)
+
+
+    async def async_step_reconfigure(self, user_input: dict[str,Any] | None=None):
+        """Handle reconfiguring."""
+        errors = {}
+
+        if user_input is not None:
+            host = user_input[CONF_HOST]
+
+#            if self._host_in_configuration_exists(host):
+#                errors[CONF_HOST] = ERROR_ALREADY_CONFIGURED
+            if not host_valid(host):
+                errors[CONF_HOST] = ERROR_INVALID_HOST
+            else:
+                await self.async_set_unique_id(host)
+                self._abort_if_unique_id_configured()
+                return self.async_create_entry(title=user_input[CONF_NAME], data=user_input)
+
+        return self.async_show_form(step_id="reconfigure", data_schema=DATA_SCHEMA, errors=errors)
